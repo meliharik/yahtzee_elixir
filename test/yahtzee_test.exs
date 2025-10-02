@@ -28,6 +28,16 @@ defmodule YahtzeeTest do
     assert %{"Full house": 0} = Yahtzee.score_lower([2, 2, 2, 4, 5])
   end
 
+  # Part 4
+  test "Identify 'Large straight'" do
+    assert %{"Large straight": 40} = Yahtzee.score_lower([2, 3, 4, 5, 6])
+    assert %{"Large straight": 40} = Yahtzee.score_lower([1, 2, 3, 4, 5])
+  end
+
+  test "Not a large straight" do
+    assert %{"Large straight": 0} = Yahtzee.score_lower([1, 3, 4, 5, 6])
+  end
+  
   # Part 5
   test "Identify 'Small straight'" do
     assert %{"Small straight": 30} = Yahtzee.score_lower([2, 3, 2, 5, 4])
