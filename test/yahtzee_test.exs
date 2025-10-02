@@ -61,4 +61,9 @@ defmodule YahtzeeTest do
   test "Identify 'Chance'" do
     assert %{Chance: 10} = Yahtzee.score_lower([1, 1, 2, 2, 4])
   end
+    # Part 8
+  test "Compute total score with multiple rounds" do
+    result = Yahtzee.total_score([[2, 3, 4, 4, 4], [6, 6, 6, 5, 5]])
+    assert result == 42
+  end
 end
