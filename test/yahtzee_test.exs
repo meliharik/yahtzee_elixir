@@ -37,4 +37,14 @@ defmodule YahtzeeTest do
   test "Not a large straight" do
     assert %{"Large straight": 0} = Yahtzee.score_lower([1, 3, 4, 5, 6])
   end
+  
+  # Part 5
+  test "Identify 'Small straight'" do
+    assert %{"Small straight": 30} = Yahtzee.score_lower([2, 3, 2, 5, 4])
+    assert %{"Small straight": 30} = Yahtzee.score_lower([2, 3, 3, 4, 5])
+  end
+
+  test "Not a small straight" do
+    assert %{"Small straight": 0} = Yahtzee.score_lower([1, 1, 3, 5, 6])
+  end
 end
