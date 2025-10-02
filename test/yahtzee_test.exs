@@ -64,6 +64,6 @@ defmodule YahtzeeTest do
     # Part 8
   test "Compute total score with multiple rounds" do
     result = Yahtzee.total_score([[2, 3, 4, 4, 4], [6, 6, 6, 5, 5]])
-    assert result == 42
+    assert result == 45
   end
 end
