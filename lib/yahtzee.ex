@@ -5,25 +5,13 @@ defmodule Yahtzee do
       "Four of a kind": four_of_a_kind(dice),
       "Full house": full_house(dice),
       "Large straight": large_straight(dice),
-      "Small straight": small_straight(dice)
+      "Small straight": small_straight(dice),
+      Yahtzee: yahtzee(dice)
     }
   end
 
-  defp three_of_a_kind(dice) do
-    if Enum.any?(Enum.frequencies(dice), fn {_k, v} -> v >= 3 end) do
-      Enum.sum(dice)
-    else
-      0
-    end
-  end
-
-  defp four_of_a_kind(dice) do
-    if Enum.any?(Enum.frequencies(dice), fn {_k, v} -> v >= 4 end) do
-      Enum.sum(dice)
-    else
-      0
-    end
-  end
+  defp three_of_a_kind(dice), do: if Enum.any?(Enum.frequencies(dice), fn {_k,v}-> v>=3 end), do: Enum.sum(dice), else: 0
+  defp four_of_a_kind(dice), do: if Enum.any?(Enum.frequencies(dice), fn {_k,v}-> v>=4 end), do: Enum.sum(dice), else: 0
 
   defp full_house(dice) do
     counts = Enum.frequencies(dice) |> Map.values() |> Enum.sort()
@@ -39,5 +27,9 @@ defmodule Yahtzee do
     uniq = Enum.sort(Enum.uniq(dice))
     straights = [[1,2,3,4], [2,3,4,5], [3,4,5,6]]
     if Enum.any?(straights, fn s -> Enum.all?(s, &(&1 in uniq)) end), do: 30, else: 0
+  end
+
+  defp yahtzee(dice) do
+    if Enum.uniq(dice) |> length() == 1, do: 50, else: 0
   end
 end
