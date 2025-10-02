@@ -47,12 +47,18 @@ defmodule YahtzeeTest do
   test "Not a small straight" do
     assert %{"Small straight": 0} = Yahtzee.score_lower([1, 1, 3, 5, 6])
   end
-    # Part 6
+
+  # Part 6
   test "Identify 'Yahtzee'" do
     assert %{Yahtzee: 50} = Yahtzee.score_lower([2, 2, 2, 2, 2])
   end
 
   test "Not a Yahtzee" do
     assert %{Yahtzee: 0} = Yahtzee.score_lower([2, 2, 2, 2, 3])
+  end
+
+  # Part 7
+  test "Identify 'Chance'" do
+    assert %{Chance: 10} = Yahtzee.score_lower([1, 1, 2, 2, 4])
   end
 end
