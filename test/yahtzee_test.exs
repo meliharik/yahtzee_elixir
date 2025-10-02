@@ -18,4 +18,13 @@ defmodule YahtzeeTest do
   test "No four of a kind" do
     assert %{"Four of a kind": 0} = Yahtzee.score_lower([1, 2, 3, 3, 4])
   end
+
+  # Part 3
+  test "Identify 'Full house'" do
+    assert %{"Full house": 25} = Yahtzee.score_lower([2, 2, 5, 5, 5])
+  end
+
+  test "Not a full house" do
+    assert %{"Full house": 0} = Yahtzee.score_lower([2, 2, 2, 4, 5])
+  end
 end
